@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         countries += ["estonia","france","germany","irland","italy","monaco","nigeria","poland","russia","spain","uk","us"]
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Show your score", style: .plain, target: self, action: #selector(showScore))
         
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
@@ -41,7 +42,7 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        title = countries[correctAnswer].uppercased() + " : " + score.formatted()
+        title = countries[correctAnswer].uppercased()
         totalQuestion += 1
         
     }
@@ -71,6 +72,11 @@ class ViewController: UIViewController {
         
         present(ac, animated: true)
     }
+       @objc func showScore(){
+        let scoreAlert = UIAlertController(title: "Score", message: "hey", preferredStyle: .actionSheet)
+        scoreAlert.addAction(UIAlertAction(title: "Your score is \(score)!", style: .default, handler: nil))
+        present(scoreAlert,animated: true)
+                                                           }
     
     
 }
